@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>وفرنهالك - Wafarnaha Lak</title>
+    <title>وفرنهالك تك - Wafarnaha Lak Tech</title>
     
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -27,16 +27,10 @@
             scroll-behavior: smooth;
         }
 
-        /* Styling for the testimonial slider */
-        .testimonial-card {
-            min-width: 100%;
-            transition: transform 0.5s ease-in-out;
-        }
-
         /* Custom radio button styles */
         .custom-radio:checked {
-            background-color: #0d9488; /* teal-600 */
-            border-color: #0d9488;
+            background-color: #16a34a; /* green-600 */
+            border-color: #16a34a;
         }
         .custom-radio:checked::after {
             content: '';
@@ -53,7 +47,7 @@
         }
         .product-card:hover {
             transform: translateY(-8px);
-            box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+            box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.2), 0 8px 10px -6px rgb(0 0 0 / 0.2);
         }
         .product-icon {
             transition: transform 0.3s ease-in-out;
@@ -61,46 +55,150 @@
         .product-card:hover .product-icon {
             transform: scale(1.2) rotate(5deg);
         }
+
+        /* Glowing and sweeping button animation */
+        .animated-button {
+            position: relative;
+            overflow: hidden;
+            animation: pulse-glow 2.5s infinite ease-out;
+        }
+
+        .animated-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -150%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.5) 50%, rgba(255, 255, 255, 0) 100%);
+            transform: skewX(-25deg);
+            animation: light-sweep 4s infinite linear;
+            animation-delay: 1s; /* Start after a small delay */
+        }
+
+        @keyframes pulse-glow {
+            0% {
+                box-shadow: 0 0 4px #15803d, 0 0 8px #15803d; /* green-700 */
+            }
+            50% {
+                box-shadow: 0 0 16px #16a34a, 0 0 24px #16a34a; /* green-600 */
+            }
+            100% {
+                box-shadow: 0 0 4px #15803d, 0 0 8px #15803d; /* green-700 */
+            }
+        }
+
+        @keyframes light-sweep {
+            0% {
+                left: -150%;
+            }
+            50% {
+                left: 150%;
+            }
+            100% {
+                left: 150%;
+            }
+        }
+
+        /* Testimonial Scroller */
+        .testimonial-scroller {
+            max-height: 500px;
+            overflow: hidden;
+            position: relative;
+            -webkit-mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
+            mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
+        }
+        .testimonial-scroller-inner {
+            display: flex;
+            flex-direction: column;
+            animation: scroll-up 120s linear infinite;
+        }
+         .testimonial-scroller:hover .testimonial-scroller-inner {
+            animation-play-state: paused;
+        }
+        @keyframes scroll-up {
+            from {
+                transform: translateY(0);
+            }
+            to {
+                transform: translateY(-50%);
+            }
+        }
+        
+        /* Partners Scroller */
+        .partners-scroller {
+            overflow: hidden;
+            position: relative;
+            width: 100%;
+        }
+        .partners-scroller-inner {
+            display: flex;
+            animation: scroll-left 72s linear infinite;
+            width: calc(200px * 36); /* 18 partners duplicated */
+        }
+         .partners-scroller:hover .partners-scroller-inner {
+            animation-play-state: paused;
+        }
+        .partner-item {
+            flex-shrink: 0;
+            width: 200px;
+        }
+        @keyframes scroll-left {
+            from {
+                transform: translateX(0);
+            }
+            to {
+                transform: translateX(-50%);
+            }
+        }
+
+
     </style>
 </head>
-<body class="bg-gray-50 text-gray-800 font-ar">
+<body class="bg-gray-900 text-gray-200 font-ar">
 
     <!-- Header Section -->
-    <header class="bg-white shadow-md sticky top-0 z-50">
+    <header class="bg-gray-800 border-b border-gray-700 sticky top-0 z-50">
         <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <div class="text-2xl font-bold text-teal-600" data-lang-key="storeName">وفرنهالك</div>
+             <a href="#" class="flex items-center">
+                <div class="w-12 h-12 rounded-full bg-white flex items-center justify-center p-1 border-2 border-green-500">
+                    <img src="photo_2025-09-01_13-51-16.png" alt="Wafarnaha Lak Tech Logo" class="h-8">
+                </div>
+            </a>
             <div class="hidden md:flex items-center space-x-8 rtl:space-x-reverse">
-                <a href="#home" class="text-gray-600 hover:text-teal-600 transition duration-300" data-lang-key="navHome">الرئيسية</a>
-                <a href="#products" class="text-gray-600 hover:text-teal-600 transition duration-300" data-lang-key="navProducts">منتجاتنا</a>
-                <a href="#testimonials" class="text-gray-600 hover:text-teal-600 transition duration-300" data-lang-key="navTestimonials">آراء العملاء</a>
-                <a href="#contact" class="text-gray-600 hover:text-teal-600 transition duration-300" data-lang-key="navContact">تواصل معنا</a>
+                <a href="#home" class="text-gray-300 hover:text-green-400 transition duration-300" data-lang-key="navHome">الرئيسية</a>
+                <a href="#products" class="text-gray-300 hover:text-green-400 transition duration-300" data-lang-key="navProducts">منتجاتنا</a>
+                <a href="#testimonials" class="text-gray-300 hover:text-green-400 transition duration-300" data-lang-key="navTestimonials">آراء العملاء</a>
+                 <a href="#partners" class="text-gray-300 hover:text-green-400 transition duration-300" data-lang-key="navPartners">شركاؤنا</a>
+                <a href="#contact" class="text-gray-300 hover:text-green-400 transition duration-300" data-lang-key="navContact">تواصل معنا</a>
             </div>
             <div class="flex items-center">
-                <button id="lang-switcher" class="bg-teal-500 text-white px-4 py-2 rounded-full hover:bg-teal-600 transition duration-300 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-opacity-50">
+                <button id="lang-switcher" class="bg-green-600 text-white px-4 py-2 rounded-full hover:bg-green-700 transition duration-300 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50">
                     English
                 </button>
-                <button id="mobile-menu-button" class="md:hidden ml-4 p-2 text-gray-600 hover:text-teal-600">
+                <button id="mobile-menu-button" class="md:hidden ml-4 p-2 text-gray-300 hover:text-green-400">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
                 </button>
             </div>
         </nav>
         <!-- Mobile Menu -->
         <div id="mobile-menu" class="hidden md:hidden px-6 pt-2 pb-4">
-            <a href="#home" class="block py-2 text-gray-600 hover:bg-gray-100 rounded" data-lang-key="navHome">الرئيسية</a>
-            <a href="#products" class="block py-2 text-gray-600 hover:bg-gray-100 rounded" data-lang-key="navProducts">منتجاتنا</a>
-            <a href="#testimonials" class="block py-2 text-gray-600 hover:bg-gray-100 rounded" data-lang-key="navTestimonials">آراء العملاء</a>
-            <a href="#contact" class="block py-2 text-gray-600 hover:bg-gray-100 rounded" data-lang-key="navContact">تواصل معنا</a>
+            <a href="#home" class="block py-2 text-gray-300 hover:bg-gray-700 rounded" data-lang-key="navHome">الرئيسية</a>
+            <a href="#products" class="block py-2 text-gray-300 hover:bg-gray-700 rounded" data-lang-key="navProducts">منتجاتنا</a>
+            <a href="#testimonials" class="block py-2 text-gray-300 hover:bg-gray-700 rounded" data-lang-key="navTestimonials">آراء العملاء</a>
+            <a href="#partners" class="block py-2 text-gray-300 hover:bg-gray-700 rounded" data-lang-key="navPartners">شركاؤنا</a>
+            <a href="#contact" class="block py-2 text-gray-300 hover:bg-gray-700 rounded" data-lang-key="navContact">تواصل معنا</a>
         </div>
     </header>
 
     <!-- Main Content -->
     <main>
         <!-- Hero Section -->
-        <section id="home" class="bg-teal-600 text-white">
+        <section id="home" class="bg-green-700 text-white">
             <div class="container mx-auto px-6 py-20 md:py-32 text-center">
                 <h1 class="text-4xl md:text-6xl font-bold mb-4" data-lang-key="heroTitle">أفضل الاشتراكات والمنتجات الرقمية</h1>
-                <p class="text-lg md:text-xl mb-8 max-w-3xl mx-auto" data-lang-key="heroSubtitle">في "وفرنهالك"، نوفر لك أشهر الاشتراكات في عالم التصميم والذكاء الاصطناعي بأفضل الأسعار.</p>
-                <a href="#products" class="bg-white text-teal-700 font-bold py-3 px-8 rounded-full hover:bg-gray-200 transition duration-300 transform hover:scale-105" data-lang-key="heroButton">تصفح المنتجات</a>
+                <p class="text-lg md:text-xl mb-8 max-w-3xl mx-auto" data-lang-key="heroSubtitle">في "وفرنهالك تك"، نوفر لك أشهر الاشتراكات في عالم التصميم والذكاء الاصطناعي بأفضل الأسعار.</p>
+                <a href="#products" class="bg-white text-green-700 font-bold py-3 px-8 rounded-full hover:bg-gray-200 transition duration-300 transform hover:scale-105" data-lang-key="heroButton">تصفح المنتجات</a>
             </div>
         </section>
 
@@ -108,23 +206,23 @@
         <section id="products" class="py-20">
             <div class="container mx-auto px-6">
                 <div class="text-center mb-12">
-                    <h2 class="text-3xl md:text-4xl font-bold text-gray-800" data-lang-key="productsTitle">منتجاتنا الرقمية</h2>
-                    <p class="text-gray-600 mt-4 max-w-2xl mx-auto" data-lang-key="productsDescription">اختر الباقة التي تناسبك من بين مجموعة واسعة من الاشتراكات الرقمية الرائدة عالميًا.</p>
+                    <h2 class="text-3xl md:text-4xl font-bold text-white" data-lang-key="productsTitle">منتجاتنا الرقمية</h2>
+                    <p class="text-gray-400 mt-4 max-w-2xl mx-auto" data-lang-key="productsDescription">اختر الباقة التي تناسبك من بين مجموعة واسعة من الاشتراكات الرقمية الرائدة عالميًا.</p>
                 </div>
 
                 <!-- Product Card Template -->
                 <script id="product-card-template" type="text/template">
-                     <div class="bg-white rounded-lg shadow-lg overflow-hidden flex flex-col product-card" data-product-key="{productKey}">
+                     <div class="bg-gray-800 rounded-lg shadow-lg overflow-hidden flex flex-col product-card" data-product-key="{productKey}">
                         <div class="p-6 {bgColor} text-white text-center">
                             <i class="fas {icon} fa-2x mb-2 product-icon"></i>
                             <h3 class="text-2xl font-bold" data-lang-key="{productKey}">{productName}</h3>
                         </div>
                         <div class="p-6 flex-grow">
-                            <h4 class="font-bold text-lg mb-2" data-lang-key="availablePlans">الباقات المتاحة</h4>
+                            <h4 class="font-bold text-lg mb-2 text-gray-100" data-lang-key="availablePlans">الباقات المتاحة</h4>
                             {plansHTML}
                         </div>
-                        <div class="p-6 bg-gray-50">
-                           <button class="w-full text-center bg-teal-600 text-white py-2 rounded-lg hover:bg-teal-700 transition duration-300 block order-now-btn" data-lang-key="orderNow">اطلب الآن</button>
+                        <div class="p-6 bg-gray-800 border-t border-gray-700">
+                           <button class="w-full text-center bg-green-600 text-white py-2 rounded-lg hover:bg-green-700 transition duration-300 block order-now-btn animated-button" data-lang-key="orderNow">اطلب الآن</button>
                         </div>
                     </div>
                 </script>
@@ -136,73 +234,35 @@
         </section>
 
         <!-- Testimonials Section -->
-        <section id="testimonials" class="bg-gray-100 py-20">
+        <section id="testimonials" class="bg-black/50 py-20">
             <div class="container mx-auto px-6">
                 <div class="text-center mb-12">
-                    <h2 class="text-3xl md:text-4xl font-bold text-gray-800" data-lang-key="testimonialsTitle">ماذا يقول عملاؤنا؟</h2>
-                    <p class="text-gray-600 mt-4 max-w-2xl mx-auto" data-lang-key="testimonialsDescription">نفخر بثقة أكثر من 6000 عميل، وهذه بعض شهاداتهم التي تدفعنا لتقديم الأفضل دائمًا.</p>
+                    <h2 class="text-3xl md:text-4xl font-bold text-white" data-lang-key="testimonialsTitle">ماذا يقول عملاؤنا؟</h2>
+                    <p class="text-gray-400 mt-4 max-w-2xl mx-auto" data-lang-key="testimonialsDescription">نفخر بثقة أكثر من 6000 عميل، وهذه بعض شهاداتهم التي تدفعنا لتقديم الأفضل دائمًا.</p>
                 </div>
-                <div class="max-w-2xl mx-auto space-y-8">
-                    <!-- Testimonial 1 -->
-                    <div class="flex items-start space-x-4 rtl:space-x-reverse">
-                        <img src="https://placehold.co/48x48/E2E8F0/4A5568?text=A" alt="Avatar" class="w-12 h-12 rounded-full">
-                        <div class="flex-1">
-                            <div class="bg-white p-4 rounded-lg shadow-md">
-                                <p class="font-bold text-teal-600" data-lang-key="testimonial1Author">أحمد خالد</p>
-                                <p class="text-gray-700" data-lang-key="testimonial1Text">"خدمة رائعة وأسعار ممتازة. حصلت على اشتراكي في دقائق وكان الدعم الفني متعاونًا جدًا. أنصح بهم بشدة!"</p>
-                            </div>
-                            <div class="flex items-center text-xs text-gray-500 mt-2 px-2 space-x-4 rtl:space-x-reverse">
-                                <a href="#" class="font-semibold hover:underline" data-lang-key="replyAction">Reply</a>
-                                <span class="text-gray-400">·</span>
-                                <span data-lang-key="timeAgo1">Just now</span>
-                                <div class="flex items-center ml-auto rtl:ml-0 rtl:mr-auto space-x-2 rtl:space-x-reverse">
-                                    <i class="fas fa-heart text-red-500 cursor-pointer hover:scale-125 transition-transform"></i>
-                                    <i class="fas fa-thumbs-up text-blue-600 cursor-pointer hover:scale-125 transition-transform"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Testimonial 2 -->
-                    <div class="flex items-start space-x-4 rtl:space-x-reverse">
-                        <img src="https://placehold.co/48x48/E2E8F0/4A5568?text=F" alt="Avatar" class="w-12 h-12 rounded-full">
-                        <div class="flex-1">
-                            <div class="bg-white p-4 rounded-lg shadow-md">
-                                <p class="font-bold text-teal-600" data-lang-key="testimonial2Author">فاطمة علي</p>
-                                <p class="text-gray-700" data-lang-key="testimonial2Text">"أفضل متجر للاشتراكات الرقمية. وفرت الكثير من المال مقارنة بالأسعار الرسمية والخدمة موثوقة وسريعة."</p>
-                            </div>
-                            <div class="flex items-center text-xs text-gray-500 mt-2 px-2 space-x-4 rtl:space-x-reverse">
-                                <a href="#" class="font-semibold hover:underline" data-lang-key="replyAction">Reply</a>
-                                <span class="text-gray-400">·</span>
-                                <span data-lang-key="timeAgo2">2h</span>
-                                <div class="flex items-center ml-auto rtl:ml-0 rtl:mr-auto space-x-2 rtl:space-x-reverse">
-                                    <i class="fas fa-heart text-red-500 cursor-pointer hover:scale-125 transition-transform"></i>
-                                    <i class="fas fa-thumbs-up text-blue-600 cursor-pointer hover:scale-125 transition-transform"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Testimonial 3 -->
-                    <div class="flex items-start space-x-4 rtl:space-x-reverse">
-                        <img src="https://placehold.co/48x48/E2E8F0/4A5568?text=Y" alt="Avatar" class="w-12 h-12 rounded-full">
-                        <div class="flex-1">
-                            <div class="bg-white p-4 rounded-lg shadow-md">
-                                <p class="font-bold text-teal-600" data-lang-key="testimonial3Author">يوسف محمود</p>
-                                <p class="text-gray-700" data-lang-key="testimonial3Text">"تجربة شراء سلسة ومنتج يعمل بكفاءة عالية. شكرًا لكم!"</p>
-                            </div>
-                            <div class="flex items-center text-xs text-gray-500 mt-2 px-2 space-x-4 rtl:space-x-reverse">
-                                <a href="#" class="font-semibold hover:underline" data-lang-key="replyAction">Reply</a>
-                                <span class="text-gray-400">·</span>
-                                <span data-lang-key="timeAgo3">1d</span>
-                                <div class="flex items-center ml-auto rtl:ml-0 rtl:mr-auto space-x-2 rtl:space-x-reverse">
-                                    <i class="fas fa-heart text-red-500 cursor-pointer hover:scale-125 transition-transform"></i>
-                                    <i class="fas fa-thumbs-up text-blue-600 cursor-pointer hover:scale-125 transition-transform"></i>
-                                </div>
-                            </div>
-                        </div>
+                <div class="max-w-2xl mx-auto testimonial-scroller">
+                    <div id="testimonial-scroller-inner" class="testimonial-scroller-inner">
+                        <!-- Testimonials will be injected here by JS -->
                     </div>
                 </div>
             </div>
         </section>
+        
+        <!-- Partners Section -->
+        <section id="partners" class="py-20">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold text-white" data-lang-key="partnersTitle">شركاء النجاح</h2>
+                    <p class="text-gray-400 mt-4 max-w-2xl mx-auto" data-lang-key="partnersDescription">نفخر بالتعاون مع العديد من الصفحات والمتاجر التي تثق في خدماتنا لتقديم أفضل الاشتراكات لعملائهم.</p>
+                </div>
+                <div class="partners-scroller">
+                    <div id="partners-scroller-inner" class="partners-scroller-inner">
+                        <!-- Partners will be injected here by JS -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
     </main>
 
     <!-- Footer -->
@@ -214,49 +274,49 @@
                 <i class="fab fa-whatsapp mr-2"></i> <span data-lang-key="modalWhatsApp">تواصل عبر واتساب</span>
             </a>
             <div class="mt-8 border-t border-gray-700 pt-8">
-                <p data-lang-key="footerRights">© 2025 وفرنهالك. جميع الحقوق محفوظة.</p>
+                <p data-lang-key="footerRights">© 2025 وفرنهالك تك. جميع الحقوق محفوظة.</p>
             </div>
         </div>
     </footer>
 
     <!-- Order Modal -->
-    <div id="order-modal" class="hidden fixed inset-0 bg-black bg-opacity-50 z-[100] flex items-center justify-center p-4 transition-opacity duration-300 opacity-0">
-        <div id="modal-content" class="bg-white rounded-lg shadow-xl w-full max-w-md mx-auto relative transform scale-95 transition-transform duration-300">
+    <div id="order-modal" class="hidden fixed inset-0 bg-black bg-opacity-70 z-[100] flex items-center justify-center p-4 transition-opacity duration-300 opacity-0">
+        <div id="modal-content" class="bg-gray-800 border border-gray-700 rounded-lg shadow-xl w-full max-w-md mx-auto relative transform scale-95 transition-transform duration-300">
             <!-- Close Button -->
-            <button id="close-modal-btn" class="absolute top-3 right-3 text-gray-400 hover:text-gray-800 rtl:right-auto rtl:left-3 z-10">
+            <button id="close-modal-btn" class="absolute top-3 right-3 text-gray-400 hover:text-white rtl:right-auto rtl:left-3 z-10">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
             </button>
 
             <!-- Step 1: Plan Selection -->
             <div id="modal-step-1">
                 <div class="p-6">
-                    <h3 id="modal-product-title" class="text-xl font-bold mb-4 text-center border-b pb-2"></h3>
-                    <p class="text-center text-gray-600 mb-4" data-lang-key="modalChoosePlan">اختر الباقة المناسبة</p>
+                    <h3 id="modal-product-title" class="text-xl font-bold mb-4 text-center border-b border-gray-700 pb-2 text-white"></h3>
+                    <p class="text-center text-gray-300 mb-4" data-lang-key="modalChoosePlan">اختر الباقة المناسبة</p>
                     <div id="modal-plans-container" class="space-y-3 max-h-64 overflow-y-auto">
                         <!-- Plans will be injected here -->
                     </div>
                      <p id="plan-error" class="text-red-500 text-sm mt-2 hidden" data-lang-key="modalPlanError">الرجاء اختيار باقة أولاً.</p>
                 </div>
-                <div class="bg-gray-50 p-4 text-right rtl:text-left rounded-b-lg">
-                    <button id="modal-next-btn" class="bg-teal-600 text-white py-2 px-6 rounded-lg hover:bg-teal-700 transition duration-300" data-lang-key="modalNext">التالي</button>
+                <div class="bg-gray-900/50 p-4 text-right rtl:text-left rounded-b-lg">
+                    <button id="modal-next-btn" class="bg-green-600 text-white py-2 px-6 rounded-lg hover:bg-green-700 transition duration-300 animated-button" data-lang-key="modalNext">التالي</button>
                 </div>
             </div>
 
             <!-- Step 2: Name Input -->
             <div id="modal-step-2" class="hidden">
                 <div class="p-6">
-                     <h3 class="text-xl font-bold mb-4" data-lang-key="modalOrderDetails">تفاصيل الطلب</h3>
-                     <div class="bg-gray-100 p-3 rounded-md mb-4 text-gray-700 space-y-1">
+                     <h3 class="text-xl font-bold mb-4 text-white" data-lang-key="modalOrderDetails">تفاصيل الطلب</h3>
+                     <div class="bg-gray-700 p-3 rounded-md mb-4 text-gray-200 space-y-1">
                         <div><strong data-lang-key="modalProduct">المنتج:</strong> <span id="summary-product" class="font-semibold"></span></div>
                         <div><strong data-lang-key="modalPlan">الباقة:</strong> <span id="summary-plan" class="font-semibold"></span></div>
                      </div>
-                     <label for="customer-name" class="block text-sm font-medium text-gray-700" data-lang-key="modalName">الاسم</label>
-                     <input type="text" id="customer-name" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-teal-500 focus:ring-teal-500" placeholder="اكتب اسمك هنا" data-lang-placeholder-key="modalNamePlaceholder">
+                     <label for="customer-name" class="block text-sm font-medium text-gray-300" data-lang-key="modalName">الاسم</label>
+                     <input type="text" id="customer-name" class="mt-1 block w-full rounded-md bg-gray-700 border-gray-600 text-white shadow-sm focus:border-green-500 focus:ring-green-500" placeholder="اكتب اسمك هنا" data-lang-placeholder-key="modalNamePlaceholder">
                      <p id="name-error" class="text-red-500 text-sm mt-2 hidden" data-lang-key="modalNameError">الرجاء إدخال اسمك.</p>
                 </div>
-                 <div class="bg-gray-50 p-4 flex justify-between rounded-b-lg">
-                    <button id="modal-back-btn" class="bg-gray-300 text-gray-800 py-2 px-6 rounded-lg hover:bg-gray-400 transition duration-300" data-lang-key="modalBack">رجوع</button>
-                    <button id="modal-whatsapp-btn" class="bg-green-500 text-white py-2 px-6 rounded-lg hover:bg-green-600 flex items-center transition duration-300">
+                 <div class="bg-gray-900/50 p-4 flex justify-between rounded-b-lg">
+                    <button id="modal-back-btn" class="bg-gray-600 text-white py-2 px-6 rounded-lg hover:bg-gray-500 transition duration-300" data-lang-key="modalBack">رجوع</button>
+                    <button id="modal-whatsapp-btn" class="bg-green-500 text-white py-2 px-6 rounded-lg hover:bg-green-600 flex items-center transition duration-300 animated-button">
                         <i class="fab fa-whatsapp mx-2"></i> <span data-lang-key="modalWhatsApp">تواصل عبر واتساب</span>
                     </button>
                 </div>
@@ -269,13 +329,14 @@
         // --- Translations and Products Data ---
         const translations = {
             en: {
-                storeName: "Wafarnaha Lak",
+                storeName: "Wafarnaha Lak Tech",
                 navHome: "Home",
                 navProducts: "Products",
                 navTestimonials: "Testimonials",
+                navPartners: "Partners",
                 navContact: "Contact Us",
                 heroTitle: "The Best Digital Subscriptions & Products",
-                heroSubtitle: "At 'Wafarnaha Lak', we provide the most popular subscriptions in design and AI at the best prices.",
+                heroSubtitle: "At 'Wafarnaha Lak Tech', we provide the most popular subscriptions in design and AI at the best prices.",
                 heroButton: "Browse Products",
                 productsTitle: "Our Digital Products",
                 productsDescription: "Choose the package that suits you from a wide range of leading global digital subscriptions.",
@@ -283,26 +344,18 @@
                 availablePlans: "Available Plans",
                 
                 // Category Titles
-                osOfficeTitle: "OS & Office Suites",
                 designContentTitle: "Design & Content Creation",
                 softwareUtilsTitle: "Software & Utilities",
                 aiToolsTitle: "AI Tools",
                 professionalLearningTitle: "Professional & Learning",
 
                 // Products
-                windows10: "Windows 10",
-                windows11: "Windows 11",
-                officeWin: "Office for Windows",
+                adobeAI: "Adobe Creative Cloud with AI",
                 officeMac: "Office for macOS",
-                office365: "Office 365 Family",
                 autodesk: "Autodesk All Apps",
-                kaspersky: "Kaspersky Antivirus",
-                avast: "Avast Antivirus",
-                idm: "IDM",
                 canva: "Canva",
                 motionArray: "Motion Array",
                 freepikShared: "Freepik (Shared)",
-                freepikPersonal: "Freepik (Personal)",
                 envatoShared: "Envato Elements (Shared)",
                 envatoPersonal: "Envato Elements (Personal)",
                 chatGPTShared: "ChatGPT (Shared)",
@@ -311,32 +364,21 @@
                 capcut: "CapCut Pro",
                 linkedin: "LinkedIn Premium",
                 figma: "Figma Pro",
-                adobe: "Adobe Creative Cloud",
-                shutterstock: "Shutterstock",
                 perplexity: "Perplexity AI",
                 gemini: "Gemini & Veo3",
                 runway: "Runway AI",
                 coursera: "Coursera Plus",
                 midjourneyVideo: "Midjourney Video",
-                pacdora: "Pacdora",
                 manus: "Manus AI",
 
                 testimonialsTitle: "What Our Clients Say",
                 testimonialsDescription: "We are proud of the trust of over 6,000 customers. Here are some of their testimonials that motivate us to always provide the best.",
-                testimonial1Text: "\"Great service and excellent prices. I got my subscription in minutes and the technical support was very helpful. Highly recommended!\"",
-                testimonial1Author: "Ahmed Khaled",
-                testimonial2Text: "\"The best store for digital subscriptions. I saved a lot of money compared to official prices, and the service is reliable and fast.\"",
-                testimonial2Author: "Fatima Ali",
-                testimonial3Text: "\"A smooth purchase experience and a product that works perfectly. Thank you!\"",
-                testimonial3Author: "Youssef Mahmoud",
+                partnersTitle: "Our Partners",
+                partnersDescription: "We are proud to collaborate with many pages and stores that trust our services to provide the best subscriptions to their customers.",
                 replyAction: "Reply",
-                timeAgo1: "Just now",
-                timeAgo2: "2h",
-                timeAgo3: "1d",
-
                 footerTitle: "Ready to Buy?",
                 footerWhatsapp: "Contact us directly via WhatsApp to order your subscription now!",
-                footerRights: "© 2025 Wafarnaha Lak. All rights reserved.",
+                footerRights: "© 2025 Wafarnaha Lak Tech. All rights reserved.",
 
                 // Modal Translations
                 modalChoosePlan: "Choose a suitable plan",
@@ -350,16 +392,17 @@
                 modalNameError: "Please enter your name.",
                 modalBack: "Back",
                 modalWhatsApp: "Contact via WhatsApp",
-                whatsappMessage: "Hello, I would like to subscribe to: {product} - Plan: {plan} - My name is: {name}",
+                whatsappMessage: "Order from Wafarnaha Lak Tech. Name: {name}. Package: {product} - {plan}",
             },
             ar: {
-                storeName: "وفرنهالك",
+                storeName: "وفرنهالك تك",
                 navHome: "الرئيسية",
                 navProducts: "منتجاتنا",
                 navTestimonials: "آراء العملاء",
+                navPartners: "شركاؤنا",
                 navContact: "تواصل معنا",
                 heroTitle: "أفضل الاشتراكات والمنتجات الرقمية",
-                heroSubtitle: "في \"وفرنهالك\"، نوفر لك أشهر الاشتراكات في عالم التصميم والذكاء الاصطناعي بأفضل الأسعار.",
+                heroSubtitle: "في \"وفرنهالك تك\"، نوفر لك أشهر الاشتراكات في عالم التصميم والذكاء الاصطناعي بأفضل الأسعار.",
                 heroButton: "تصفح المنتجات",
                 productsTitle: "منتجاتنا الرقمية",
                 productsDescription: "اختر الباقة التي تناسبك من بين مجموعة واسعة من الاشتراكات الرقمية الرائدة عالميًا.",
@@ -367,26 +410,18 @@
                 availablePlans: "الباقات المتاحة",
 
                 // Category Titles
-                osOfficeTitle: "أنظمة التشغيل والبرامج المكتبية",
                 designContentTitle: "برامج التصميم والمحتوى",
                 softwareUtilsTitle: "برامج وأدوات مساعدة",
                 aiToolsTitle: "أدوات الذكاء الاصطناعي",
                 professionalLearningTitle: "احترافي وتعليمي",
 
                 // Products
-                windows10: "Windows 10",
-                windows11: "Windows 11",
-                officeWin: "Office للويندوز",
+                adobeAI: "Adobe Creative Cloud مع الذكاء الاصطناعي",
                 officeMac: "Office للماك",
-                office365: "Office 365 Family",
                 autodesk: "Autodesk All Apps",
-                kaspersky: "Kaspersky Antivirus",
-                avast: "Avast Antivirus",
-                idm: "IDM",
                 canva: "Canva",
                 motionArray: "Motion Array",
                 freepikShared: "Freepik (مشترك)",
-                freepikPersonal: "Freepik (شخصي)",
                 envatoShared: "Envato Elements (مشترك)",
                 envatoPersonal: "Envato Elements (شخصي)",
                 chatGPTShared: "ChatGPT (مشترك)",
@@ -395,32 +430,21 @@
                 capcut: "CapCut Pro",
                 linkedin: "LinkedIn Premium",
                 figma: "Figma Pro",
-                adobe: "Adobe Creative Cloud",
-                shutterstock: "Shutterstock",
                 perplexity: "Perplexity AI",
                 gemini: "Gemini & Veo3",
                 runway: "Runway AI",
                 coursera: "Coursera Plus",
                 midjourneyVideo: "Midjourney Video",
-                pacdora: "Pacdora",
                 manus: "Manus AI",
 
                 testimonialsTitle: "ماذا يقول عملاؤنا؟",
                 testimonialsDescription: "نفخر بثقة أكثر من 6000 عميل، وهذه بعض شهاداتهم التي تدفعنا لتقديم الأفضل دائمًا.",
-                testimonial1Text: "\"خدمة رائعة وأسعار ممتازة. حصلت على اشتراكي في دقائق وكان الدعم الفني متعاونًا جدًا. أنصح بهم بشدة!\"",
-                testimonial1Author: "أحمد خالد",
-                testimonial2Text: "\"أفضل متجر للاشتراكات الرقمية. وفرت الكثير من المال مقارنة بالأسعار الرسمية والخدمة موثوقة وسريعة.\"",
-                testimonial2Author: "فاطمة علي",
-                testimonial3Text: "\"تجربة شراء سلسة ومنتج يعمل بكفاءة عالية. شكرًا لكم!\"",
-                testimonial3Author: "يوسف محمود",
+                partnersTitle: "شركاء النجاح",
+                partnersDescription: "نفخر بالتعاون مع العديد من الصفحات والمتاجر التي تثق في خدماتنا لتقديم أفضل الاشتراكات لعملائهم.",
                 replyAction: "رد",
-                timeAgo1: "الآن",
-                timeAgo2: "منذ ساعتين",
-                timeAgo3: "منذ يوم",
-
                 footerTitle: "هل أنت مستعد للشراء؟",
                 footerWhatsapp: "تواصل معنا مباشرة عبر واتساب لطلب اشتراكك الآن!",
-                footerRights: "© 2025 وفرنهالك. جميع الحقوق محفوظة.",
+                footerRights: "© 2025 وفرنهالك تك. جميع الحقوق محفوظة.",
 
                 // Modal Translations
                 modalChoosePlan: "اختر الباقة المناسبة",
@@ -434,143 +458,142 @@
                 modalNameError: "الرجاء إدخال اسمك.",
                 modalBack: "رجوع",
                 modalWhatsApp: "تواصل عبر واتساب",
-                whatsappMessage: "مرحباً، أرغب في الاشتراك في: {product} - باقة: {plan} - اسمي: {name}",
+                whatsappMessage: "طلب اشتراك من وفرنهالك تك. الاسم: {name}. الباقة: {product} - {plan}",
             }
         };
+
+         // --- Testimonials Data ---
+        const testimonialsData = [
+            { author: 'Karim Adel', text: 'بصراحة خدمة عملاء محترفة جداً، ردوا عليا بسرعة والاشتراك اتفعل في نفس اللحظة. شغل عالي.', time: 'منذ 5 دقائق', avatar: 'K' },
+            { author: 'سارة علي', text: 'أحسن سعر لاشتراك أدوبي لقيته في السوق كله، ومضمونين. شكرًا يا شباب.', time: 'منذ 20 دقيقة', avatar: 'S' },
+            { author: 'Tony Maher', text: 'كنت خايف يطلع الموضوع اشتغالة بس طلعوا رجالة بجد والخدمة تمام التمام.', time: 'منذ ساعة', avatar: 'T' },
+            { author: 'نورهان طارق', text: 'وفرتوا عليا فلوس كتير ومجهود. كل حاجة كانت سهلة وسريعة.', time: 'منذ 3 ساعات', avatar: 'N' },
+            { author: 'Omar Sherif', text: 'التعامل معاهم مريح جداً، خلصت كل حاجة على الواتساب في أقل من 10 دقايق.', time: 'منذ 5 ساعات', avatar: 'O' },
+            { author: 'إيمان حسن', text: 'شغل نضيف وأسعار معقولة. مش آخر تعامل أكيد.', time: 'منذ 12 ساعة', avatar: 'E' },
+            { author: 'Mark George', text: 'أنا ديزاينر والاشتراكات دي أساسية في شغلي، بجد أنقذتوني بالأسعار دي.', time: 'منذ يوم', avatar: 'M' },
+            { author: 'فاطمة الزهراء', text: 'الاشتراك شغال زي الفل ومفيهوش أي مشاكل. خدمة 10/10.', time: 'منذ يوم', avatar: 'F' },
+            { author: 'Khaled Ibrahim', text: 'كنت دايما بحمل البرامج بالكراك ومشاكله كتير، دلوقتي ريحت دماغي خالص.', time: 'منذ يومين', avatar: 'K' },
+            { author: 'Sandra Nagy', text: 'الدعم الفني ساعدني خطوة بخطوة لحد ما كل حاجة اشتغلت. ناس محترمة.', time: 'منذ يومين', avatar: 'S' },
+            { author: 'ياسر أمين', text: 'لقيت عندهم اشتراكات مش موجودة في أي حتة تانية. كملوا على كده.', time: 'منذ 3 أيام', avatar: 'Y' },
+            { author: 'Dina Kamal', text: 'الأسعار بجد وهمية! فرقت معايا جدا في الميزانية. شكرًا وفرنهالك تك.', time: 'منذ 4 أيام', avatar: 'D' },
+            { author: 'مصطفى رضا', text: 'موقع سهل والطلب منه بسيط جدا. تجربة شراء ممتازة.', time: 'منذ أسبوع', avatar: 'M' },
+            { author: 'Jessica Mourad', text: 'كل أصحابي اللي رشحتلهم الموقع شكروني جدا. أنتم تستاهلوا كل خير.', time: 'منذ أسبوع', avatar: 'J' },
+            { author: 'Andrew Atef', text: 'مصداقية وسرعة في التنفيذ، وده أهم حاجة في الشغل الأونلاين.', time: 'منذ أسبوعين', avatar: 'A' }
+        ];
+
+        // --- Partners Data ---
+        const partnersData = [
+             { name: 'Digital Zone', nameAr: 'المنصة الرقمية', icon: 'fa-cubes' },
+             { name: 'Eshtraakatak', nameAr: 'اشتراكاتك' },
+             { name: 'Creative Corner', nameAr: 'الركن الإبداعي', icon: 'fa-palette' },
+             { name: 'Aman', nameAr: 'امان' },
+             { name: 'Tech Savvy', nameAr: 'خبير تك', icon: 'fa-laptop-code' },
+             { name: 'Engezny', nameAr: 'انجزنى' },
+             { name: 'Pixel Perfect', nameAr: 'بكسل آرت', icon: 'fa-image' },
+             { name: 'Sharik Al Raqami', nameAr: 'شريك الرقمى' },
+             { name: 'AI Masters', nameAr: 'أساتذة الذكاء الاصطناعي', icon: 'fa-robot' },
+             { name: 'Account Pro', nameAr: 'اكونت برو' },
+             { name: 'Code Crafters', nameAr: 'صناع الأكواد', icon: 'fa-code' },
+             { name: 'Sigma Account', nameAr: 'سيجما اكونت' },
+             { name: 'Design Hub', nameAr: 'مركز التصميم', icon: 'fa-drafting-compass' },
+             { name: 'Digital Account', nameAr: 'ديجتال اكونت' },
+             { name: 'Future Tech', nameAr: 'تقنية المستقبل', icon: 'fa-microchip' },
+             { name: 'Elite', nameAr: 'ايليت' },
+             { name: 'Premium Account', nameAr: 'بريميوم اكونت' },
+             { name: 'Topz Account', nameAr: 'توبز اكونت' }
+        ];
 
         // --- Product Data Generation ---
         const getProductsData = () => {
              return {
-                osOffice: {
-                    titleKey: "osOfficeTitle", 
-                    products: [
-                        { key: 'windows10', icon: 'fab fa-windows', color: 'bg-blue-600', plans: [
-                            { type: 'Pro - Retail', duration: '1 Time use', basePrice: 100 },
-                            { type: 'Pro - OEM', duration: 'Lifetime', basePrice: 200 }
-                        ]},
-                        { key: 'windows11', icon: 'fab fa-windows', color: 'bg-blue-700', plans: [
-                            { type: 'Pro - Retail', duration: '1 Time use', basePrice: 100 },
-                            { type: 'Pro - OEM', duration: 'Lifetime', basePrice: 180 }
-                        ]},
-                        { key: 'officeWin', icon: 'fab fa-microsoft', color: 'bg-orange-600', plans: [
-                            { type: '2016 Retail', duration: 'Phone Activation', basePrice: 90 },
-                            { type: '2019 Retail', duration: 'Phone Activation', basePrice: 90 },
-                            { type: '2021 Retail', duration: 'Phone Activation', basePrice: 120 },
-                            { type: '2021 Bind', duration: '1 Time use', basePrice: "On demand" },
-                        ]},
-                        { key: 'officeMac', icon: 'fab fa-apple', color: 'bg-gray-700', plans: [
-                            { type: '2016 Home/Business', duration: 'Retail', basePrice: 500 },
-                            { type: '2019 Home/Business', duration: 'Retail', basePrice: 700 },
-                            { type: '2021 Home/Business', duration: 'Retail', basePrice: 2850 }
-                        ]},
-                        { key: 'office365', icon: 'fa-cloud', color: 'bg-sky-500', plans: [
-                            { type: '5 Devices', duration: '12 m', basePrice: 500 }
-                        ]}
-                    ]
-                },
                 designContent: {
                     titleKey: "designContentTitle",
                     products: [
+                        { key: 'adobeAI', icon: 'fa-layer-group', color: 'bg-red-600', plans: [
+                             { type: 'رسمي وقانوني', duration: 'شهر', basePrice: 350 },
+                             { type: 'رسمي وقانوني', duration: 'شهرين', basePrice: 750 },
+                             { type: 'رسمي وقانوني', duration: '4 شهور', basePrice: 1500 },
+                             { type: 'رسمي وقانوني', duration: '6 شهور', basePrice: 1750 },
+                             { type: 'رسمي وقانوني', duration: 'سنة', basePrice: 3000 }
+                        ]},
                         { key: 'canva', icon: 'fa-palette', color: 'bg-purple-500', plans: [
-                            { type: 'Personal Email', duration: '1 Year', basePrice: 75 },
-                            { type: 'Personal Email', duration: '3 Year', basePrice: 150 }
+                            { type: 'Personal Email', duration: '1 Year', basePrice: 200 },
+                            { type: 'Personal Email', duration: '3 Year', basePrice: 500 }
                         ]},
                         { key: 'motionArray', icon: 'fa-film', color: 'bg-red-500', plans: [
-                            { type: 'Shared', duration: '1 m', basePrice: 300 },
-                            { type: 'Shared', duration: '3 m', basePrice: 700 },
-                            { type: 'Shared', duration: '12 m', basePrice: 2200 }
+                            { type: 'Shared', duration: '1 m', basePrice: 500 },
+                            { type: 'Shared', duration: '3 m', basePrice: 850 },
+                            { type: 'Shared', duration: '12 m', basePrice: 3000 }
                         ]},
                         { key: 'freepikShared', icon: 'fa-images', color: 'bg-cyan-500', plans: [
-                            { type: '25 File/Day - no AI', duration: '1 m', basePrice: 200 },
-                            { type: '25 File/Day - no AI', duration: '3 m', basePrice: 500 },
-                            { type: '25 File/Day - no AI', duration: '6 m', basePrice: 850 },
-                            { type: '25 File/Day - no AI', duration: '12 m', basePrice: 1600 }
-                        ]},
-                        { key: 'freepikPersonal', icon: 'fa-user-check', color: 'bg-cyan-600', plans: [
-                            { type: 'Premium', duration: '12m', basePrice: 5200 },
-                            { type: 'Premium +', duration: '12m', basePrice: 10560 }
+                            { type: '25 File/Day - no AI', duration: '1 m', basePrice: 350 },
+                            { type: '25 File/Day - no AI', duration: '3 m', basePrice: 900 },
+                            { type: '25 File/Day - no AI', duration: '6 m', basePrice: 1400 },
+                            { type: '25 File/Day - no AI', duration: '12 m', basePrice: 2200 }
                         ]},
                         { key: 'envatoShared', icon: 'fa-leaf', color: 'bg-green-500', plans: [
-                            { type: 'Unlimited', duration: '3 m', basePrice: 500 },
-                            { type: 'Unlimited', duration: '6 m', basePrice: 750 },
-                            { type: 'Unlimited', duration: '12 m', basePrice: 1100 }
+                            { type: 'Unlimited', duration: '1 m', basePrice: 380 },
+                            { type: 'Unlimited', duration: '3 m', basePrice: 900 },
+                            { type: 'Unlimited', duration: '6 m', basePrice: 1200 },
+                            { type: 'Unlimited', duration: '12 m', basePrice: 2200 }
                         ]},
-                         { key: 'envatoPersonal', icon: 'fa-user-tag', color: 'bg-green-600', plans: [
-                            { type: 'Personal', duration: '12m', basePrice: 5000 }
+                        { key: 'envatoPersonal', icon: 'fa-user-tag', color: 'bg-green-600', plans: [
+                            { type: 'Personal', duration: '12m', basePrice: 0, currency: 'USD' }
                         ]},
                         { key: 'capcut', icon: 'fa-cut', color: 'bg-black', plans: [
-                            { type: 'Personal', duration: '1m', basePrice: 250 },
-                            { type: 'Personal', duration: '12 m', basePrice: 2300 }
+                            { type: 'Personal', duration: '1m', basePrice: 350, usdPrice: 8 },
+                            { type: 'Personal', duration: '12 m', basePrice: 2800, usdPrice: 62 }
                         ]},
                         { key: 'figma', icon: 'fa-vector-square', color: 'bg-pink-500', plans: [
-                             { type: 'Educational', duration: '12 m', basePrice: 500 }
-                        ]},
-                        { key: 'adobe', icon: 'fa-layer-group', color: 'bg-red-600', plans: [
-                             { type: 'Enterprise', duration: '1m', basePrice: 350 },
-                             { type: 'All apps individual', duration: '6m', basePrice: 1500 },
-                             { type: 'Enterprise', duration: '12m', basePrice: 2600 }
-                        ]},
-                        { key: 'shutterstock', icon: 'fa-camera-retro', color: 'bg-red-700', plans: [
-                            { type: 'Unlimited - Personal', duration: '1m', basePrice: 2999 },
-                            { type: 'Unlimited - Personal', duration: '12m', basePrice: 32000 }
-                        ]},
-                        { key: 'pacdora', icon: 'fa-box-open', color: 'bg-orange-500', plans: [
-                            { type: 'Personal', duration: '1m', basePrice: 20, currency: 'USD' },
-                            { type: 'Personal', duration: '12m', basePrice: 120, currency: 'USD' }
+                             { type: 'Educational', duration: '12 m', basePrice: 900, usdPrice: 20 }
                         ]},
                     ]
                 },
                 softwareUtils: {
                     titleKey: "softwareUtilsTitle",
                     products: [
+                         { key: 'officeMac', icon: 'fab fa-apple', color: 'bg-gray-700', plans: [
+                            { type: '2016 Home/Business', duration: 'Retail', basePrice: 1000 }
+                        ]},
                         { key: 'autodesk', icon: 'fa-drafting-compass', color: 'bg-gray-800', plans: [
-                            { type: 'All apps', duration: '1 Year', basePrice: 250 }
-                        ]},
-                        { key: 'kaspersky', icon: 'fa-shield-halved', color: 'bg-red-800', plans: [
-                            { type: '1 Device', duration: '1 Year', basePrice: 200 }
-                        ]},
-                        { key: 'avast', icon: 'fa-shield-virus', color: 'bg-orange-700', plans: [
-                            { type: '1 Device', duration: '1 Year', basePrice: 200 }
-                        ]},
-                        { key: 'idm', icon: 'fa-download', color: 'bg-teal-700', plans: [
-                            { type: '1 Device', duration: '1 Year', basePrice: 850 }
+                            { type: 'All apps', duration: '1 Year', basePrice: 550 }
                         ]},
                     ]
                 },
                 aiTools: {
                     titleKey: "aiToolsTitle",
                     products: [
-                        { key: 'chatGPTShared', icon: 'fa-robot', color: 'bg-teal-500', plans: [
-                            { type: '1 Device', duration: '1 m', basePrice: 175 },
-                            { type: '1 Device', duration: '3 m', basePrice: 450 },
-                            { type: '1 Device', duration: '6 m', basePrice: 900 },
-                            { type: '1 Device', duration: '12 m', basePrice: 1500 }
+                        { key: 'chatGPTShared', icon: 'fa-robot', color: 'bg-green-500', plans: [
+                            { type: '1 Device', duration: '1 m', basePrice: 250, usdPrice: 6 },
+                            { type: '1 Device', duration: '3 m', basePrice: 750, usdPrice: 17 },
+                            { type: '1 Device', duration: '6 m', basePrice: 1200, usdPrice: 27 },
+                            { type: '1 Device', duration: '12 m', basePrice: 2000, usdPrice: 44 }
                         ]},
-                        { key: 'chatGPTPersonal', icon: 'fa-user-astronaut', color: 'bg-teal-600', plans: [
-                            { type: 'Personal', duration: '1m', basePrice: 750 },
+                        { key: 'chatGPTPersonal', icon: 'fa-user-astronaut', color: 'bg-green-600', plans: [
+                            { type: 'Personal', duration: '1m', basePrice: 900, usdPrice: 20 },
                         ]},
                         { key: 'midjourney', icon: 'fa-wand-magic-sparkles', color: 'bg-indigo-600', plans: [
-                            { type: 'Unlimited', duration: '1 m', basePrice: 250 },
-                            { type: 'Unlimited', duration: '3 m', basePrice: 600 },
-                            { type: 'Unlimited', duration: '6 m', basePrice: 1000 },
-                            { type: 'Unlimited', duration: '12 m', basePrice: 1500 }
+                            { type: 'Unlimited', duration: '1 m', basePrice: 380, usdPrice: 8 },
+                            { type: 'Unlimited', duration: '3 m', basePrice: 900, usdPrice: 20 },
+                            { type: 'Unlimited', duration: '6 m', basePrice: 1200, usdPrice: 27 },
+                            { type: 'Unlimited', duration: '12 m', basePrice: 2200, usdPrice: 49 }
                         ]},
                         { key: 'perplexity', icon: 'fa-brain', color: 'bg-green-500', plans: [
-                             { type: 'Personal', duration: '12m', basePrice: 400 }
+                             { type: 'Personal', duration: '12m', basePrice: 800, usdPrice: 18 }
                         ]},
                         { key: 'gemini', icon: 'fab fa-google', color: 'bg-rose-500', plans: [
-                            { type: 'Pro Plan - 1000 Pts', duration: '1m', basePrice: 300 },
-                            { type: 'Ultra Plan - 12,500 Pts', duration: '1m', basePrice: 2500 }
+                            { type: 'Pro Plan - 1000 Pts', duration: '1m', basePrice: 350, usdPrice: 8 },
+                            { type: 'Ultra Plan - 12,500 Pts', duration: '1m', basePrice: 3800, usdPrice: 84 }
                         ]},
                          { key: 'runway', icon: 'fa-person-running', color: 'bg-purple-600', plans: [
-                            { type: 'Shared', duration: '1m', basePrice: 1000 },
-                            { type: 'Shared', duration: '3m', basePrice: 2800 }
+                            { type: 'Shared', duration: '1m', basePrice: 1300, usdPrice: 29 },
+                            { type: 'Shared', duration: '3m', basePrice: 3000, usdPrice: 67 }
                         ]},
                         { key: 'midjourneyVideo', icon: 'fa-video', color: 'bg-indigo-700', plans: [
-                             { type: 'Pro plan shared', duration: '1m', basePrice: 500 }
+                             { type: 'Pro plan shared', duration: '1m', basePrice: 850, usdPrice: 19 }
                         ]},
                         { key: 'manus', icon: 'fa-pencil-alt', color: 'bg-blue-500', plans: [
-                            { type: 'Free plan', duration: '1000 points', basePrice: 50 }
+                            { type: 'Free plan', duration: '1000 points', basePrice: 120, usdPrice: 3 }
                         ]}
                     ]
                 },
@@ -584,7 +607,7 @@
                              { type: 'Business', duration: '12m', basePrice: 'السعر متغير يوميا' },
                         ]},
                         { key: 'coursera', icon: 'fa-graduation-cap', color: 'bg-sky-700', plans: [
-                            { type: 'Personal', duration: '12m', basePrice: 2200 }
+                            { type: 'Personal', duration: '12m', basePrice: 3000, usdPrice: 67 }
                         ]}
                     ]
                 }
@@ -599,7 +622,7 @@
         const setLanguage = (lang) => {
             htmlEl.setAttribute('lang', lang);
             htmlEl.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
-            bodyEl.className = `bg-gray-50 text-gray-800 font-${lang}`;
+            bodyEl.className = `bg-gray-900 text-gray-200 font-${lang}`;
             
             document.querySelectorAll('[data-lang-key]').forEach(element => {
                 const key = element.getAttribute('data-lang-key');
@@ -614,6 +637,10 @@
                     element.placeholder = translations[lang][key];
                 }
             });
+
+            const partnersScroller = document.getElementById('partners-scroller-inner');
+            if(partnersScroller) generatePartners(lang);
+
 
             langSwitcher.textContent = lang === 'ar' ? 'English' : 'العربية';
             localStorage.setItem('language', lang);
@@ -633,7 +660,7 @@
                 categoryWrapper.className = 'mb-16';
 
                 const categoryTitle = document.createElement('h3');
-                categoryTitle.className = 'text-2xl font-bold text-center mb-8 border-b-2 border-teal-500 pb-2';
+                categoryTitle.className = 'text-2xl font-bold text-center mb-8 border-b-2 border-green-500 pb-2 text-white';
                 categoryTitle.dataset.langKey = category.titleKey;
                 
                 const productsGrid = document.createElement('div');
@@ -641,28 +668,29 @@
 
                 category.products.forEach(product => {
                     // Generate HTML for plans
-                    let plansHTML = '<ul class="text-gray-600 space-y-2 product-plans">';
+                    let plansHTML = '<ul class="text-gray-300 space-y-2 product-plans">';
                     product.plans.forEach(plan => {
                         const planName = `${plan.type} - ${plan.duration}`;
                         
                         let priceText;
                         if (typeof plan.basePrice !== 'number') {
-                            // Handle strings like "On demand" or "السعر متغير يوميا"
-                            priceText = plan.basePrice;
-                        } else if (plan.currency === 'USD') {
-                            // Handle USD prices without adding 100
-                            priceText = `$${plan.basePrice}`;
+                             priceText = plan.basePrice;
                         } else {
-                            // Handle EGP prices and add 100
-                            const finalPrice = plan.basePrice + 100;
-                            priceText = `${finalPrice} ${currentLang === 'ar' ? 'جنيه' : 'EGP'}`;
+                            const egpPrice = `${plan.basePrice} ${currentLang === 'ar' ? 'جنيه' : 'EGP'}`;
+                            const usdPrice = plan.usdPrice ? ` / $${plan.usdPrice}` : (plan.currency === 'USD' ? `$${plan.basePrice}` : '');
+                            
+                            if(plan.currency === 'USD'){
+                                priceText = usdPrice;
+                            } else {
+                                priceText = `${egpPrice}${usdPrice}`;
+                            }
                         }
 
                         const planPriceText = priceText;
 
                         plansHTML += `<li class="flex justify-between items-center" data-plan-name="${planName}" data-plan-price="${planPriceText}">
-                                        <span class="text-sm flex-1"><i class="fas fa-check-circle text-teal-500 mr-2 rtl:ml-2"></i>${planName}</span>
-                                        <span class="font-bold text-teal-600 text-sm whitespace-nowrap">${planPriceText}</span>
+                                        <span class="text-sm flex-1"><i class="fas fa-check-circle text-green-400 mr-2 rtl:ml-2"></i>${planName}</span>
+                                        <span class="font-bold text-green-400 text-sm whitespace-nowrap">${planPriceText}</span>
                                       </li>`;
                     });
                     plansHTML += '</ul>';
@@ -686,6 +714,59 @@
             setLanguage(currentLang);
         }
 
+        function generateTestimonials() {
+            const scrollerInner = document.getElementById('testimonial-scroller-inner');
+            if (!scrollerInner) return;
+
+            let testimonialsHTML = '';
+            testimonialsData.forEach(testimonial => {
+                testimonialsHTML += `
+                    <div class="flex items-start space-x-4 rtl:space-x-reverse mb-8">
+                        <img src="https://placehold.co/48x48/718096/E2E8F0?text=${testimonial.avatar}" alt="Avatar" class="w-12 h-12 rounded-full">
+                        <div class="flex-1">
+                            <div class="bg-gray-800 p-4 rounded-lg shadow-md">
+                                <p class="font-bold text-green-400">${testimonial.author}</p>
+                                <p class="text-gray-300">${testimonial.text}</p>
+                            </div>
+                            <div class="flex items-center text-xs text-gray-400 mt-2 px-2 space-x-4 rtl:space-x-reverse">
+                                <a href="#" class="font-semibold text-gray-300 hover:underline">رد</a>
+                                <span class="text-gray-500">·</span>
+                                <span>${testimonial.time}</span>
+                                <div class="flex items-center ml-auto rtl:ml-0 rtl:mr-auto space-x-2 rtl:space-x-reverse">
+                                    <i class="fas fa-heart text-red-500 cursor-pointer hover:scale-125 transition-transform"></i>
+                                    <i class="fas fa-thumbs-up text-blue-500 cursor-pointer hover:scale-125 transition-transform"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+            // Duplicate for seamless scroll
+            scrollerInner.innerHTML = testimonialsHTML + testimonialsHTML;
+        }
+
+        function generatePartners(lang = 'ar') {
+             const scrollerInner = document.getElementById('partners-scroller-inner');
+            if (!scrollerInner) return;
+
+            let partnersHTML = '';
+            partnersData.forEach(partner => {
+                const name = lang === 'ar' ? partner.nameAr : partner.name;
+                const iconHTML = partner.icon ? `<i class="fas ${partner.icon} fa-2x text-green-400 mb-2"></i>` : '';
+                partnersHTML += `
+                     <div class="partner-item flex items-center justify-center p-4">
+                        <div class="text-center">
+                             ${iconHTML}
+                             <p class="font-semibold text-xl text-white">${name}</p>
+                        </div>
+                     </div>
+                `;
+            });
+            // Duplicate for seamless scroll
+            scrollerInner.innerHTML = partnersHTML + partnersHTML;
+        }
+
+
         langSwitcher.addEventListener('click', () => {
             const currentLang = htmlEl.getAttribute('lang') || 'ar';
             const newLang = currentLang === 'ar' ? 'en' : 'ar';
@@ -696,8 +777,9 @@
 
         document.addEventListener('DOMContentLoaded', () => {
             generateProducts();
+            generateTestimonials();
             const savedLang = localStorage.getItem('language') || 'ar';
-            setLanguage(savedLang);
+            setLanguage(savedLang); // This will call generatePartners
         });
         
         const mobileMenuButton = document.getElementById('mobile-menu-button');
@@ -781,10 +863,10 @@
                         const planId = `plan-${productKey}-${index}`;
                         
                         const planHTML = `
-                        <label for="${planId}" class="flex items-center p-3 border rounded-lg hover:bg-gray-50 cursor-pointer transition duration-200">
-                            <input type="radio" name="plan" id="${planId}" value="${planName} (${planPrice})" class="custom-radio w-5 h-5 border-2 border-gray-300 rounded-full appearance-none flex items-center justify-center mr-3 rtl:mr-0 rtl:ml-3 transition duration-200">
-                            <span class="flex-grow font-medium text-gray-800">${planName}</span>
-                            <span class="font-bold text-teal-600">${planPrice}</span>
+                        <label for="${planId}" class="flex items-center p-3 border border-gray-700 rounded-lg hover:bg-gray-700 cursor-pointer transition duration-200">
+                            <input type="radio" name="plan" id="${planId}" value="${planName} (${planPrice})" class="custom-radio w-5 h-5 border-2 border-gray-500 rounded-full appearance-none flex items-center justify-center mr-3 rtl:mr-0 rtl:ml-3 transition duration-200">
+                            <span class="flex-grow font-medium text-gray-200">${planName}</span>
+                            <span class="font-bold text-green-400">${planPrice}</span>
                         </label>
                         `;
                         plansContainer.insertAdjacentHTML('beforeend', planHTML);
@@ -845,4 +927,5 @@
     </script>
 </body>
 </html>
+
 
